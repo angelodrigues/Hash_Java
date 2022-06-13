@@ -13,6 +13,8 @@ public class App {
         Boolean game = true;
         String win = "";
     
+        start(velha);
+
         while(game){
             drawGame(velha);
             win = checkWin(velha);
@@ -21,7 +23,7 @@ public class App {
                 break;
             }
             try{
-                if(checkPlay(velha, play(sc, res)), result){
+                if(checkPlay(velha, play(sc, result), result)){
                     if(result == 'x'){
                         result = 'o';
                     }else{
@@ -65,12 +67,20 @@ public class App {
         return p;
     }   
 
-    public void Boolean checkPlay(Campos[][] velha, int p[], char result){
+    public static Boolean checkPlay(Campo[][] velha, int p[], char result){
         if(velha[p[0]][p[1]].getSimbolo() == ' '){
             velha[p[0]][p[1]].setSimbolo(result);
             return true;
         }else{
             return false;
+        }
+    }
+
+    public static void start(Campo[][] velha){  
+        for(int i = 1; i < 3; i++){
+            for(int j = 0; j < 3 ; j++){
+                velha[i][j] = new Campo();
+            }
         }
     }
 
